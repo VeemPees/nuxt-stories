@@ -1,20 +1,20 @@
 ---
   title: Fetch examples
-  high: 1ere112
-  items: 
-    - hdr1: val1
-    - hdr2
   fetch: 
     csv: /someFile.csv | csv
-    json: /someJson.json | json
-    more: https://world.openfoodfacts.org/api/v0/product/78742040011.json
-    book: https://openlibrary.org/works/OL45883W.json | json
-  parsed: 
-  lines: 
+    someJson: /someJson.json | json
+    foodFacts: https://world.openfoodfacts.org/api/v0/product/3159470000120.json | json
+    book: https://openlibrary.org/works/OL258902W.json | json 
 ---
+<button class="btn btn-primary" v-on:click="fmFetch()">Refresh</button>
 
-Fetch {{ fetch }}
+Some csv:
+<b-table-lite :items="fetched.csv" />
 
-<b-table-lite :items="fetched.json" />
+Some Json:
+<b-table-lite :items="fetched.someJson" />
+
+<img :src="fetched.foodFacts.product.image_front_url" />
 
 <p> {{ fetched.book.description.value }} </p>
+
